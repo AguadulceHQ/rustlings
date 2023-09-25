@@ -13,10 +13,21 @@
 //
 // No hints this time ;)
 
-// I AM NOT DONE
-
 // Put your function here!
-// fn calculate_price_of_apples {
+fn calculate_price_of_apples(quantity: i32) -> i32 {
+    const FULL_PRICE: i32 = 2;
+    const DISCOUNTED_PRICE: i32 = 1;
+
+    let mut price: i32 = 0;
+
+    if quantity > 40 {
+        price = quantity * DISCOUNTED_PRICE
+    } else {
+        price = quantity * FULL_PRICE
+    }
+
+    price
+}
 
 // Don't modify this function!
 #[test]
