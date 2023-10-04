@@ -8,8 +8,6 @@
 // Execute `rustlings hint threads1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 use std::thread;
 use std::time::{Duration, Instant};
 
@@ -25,7 +23,10 @@ fn main() {
     }
 
     let mut results: Vec<u128> = vec![];
+    // JoinHandle is the return type of a thread::spawn call
+    // JoinHandle is an owned value that, when we call the join method on it, will wait for its thread to finish
     for handle in handles {
+        results.push(handle.join().unwrap())
         // TODO: a struct is returned from thread::spawn, can you use it?
     }
 
