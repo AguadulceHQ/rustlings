@@ -44,6 +44,28 @@ impl Default for Person {
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        // base case the input is empty or doesn't contain a correct separator
+        if s.len() == 0 || !s.contains(",") {
+            return Person::default();
+        }
+
+        let input: Vec<&str> = s.split(",").collect();
+        let name = input[0];
+        let age = input[1];
+
+        // if either name or age are empty return default Person
+        if name.len() == 0 || age.len() == 0 {
+            return Person::default();
+        } else {
+            if let Ok(age) = age.parse::<usize>() {
+                return Person {
+                    name: String::from(name),
+                    age,
+                };
+            } else {
+                return Person::default();
+            }
+        }
     }
 }
 
